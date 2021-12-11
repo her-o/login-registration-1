@@ -1,0 +1,80 @@
+Login and registration 1
+
+I will build a user login and registration project
+
+The technologies I intend to use are:
+
+-Backend: 
+Spring boot - Hibernate - MySql
+
+-Frontend:
+Angular - Bootstrap
+
+
+Project:
+
+I started building the backend
+
+I create 5 packages
+
+repository -> contains an interface that extends JpaRepository to manage
+users in the database
+
+service -> contains an interface with unimplemented methods for the userservice
+
+service impl -> contains a class that implements the service interface
+
+controller -> responsable of handling the requests are responses between
+the front end and the database
+
+entity -> will contain the jpa entity "user" that will be saved in the actual 
+database.
+
+1. I start creating the AppUser entity. 
+I used the name "AppUser" instead of "User" in case I decide to add security
+eventually.
+
+This class will have the anotation @Entity to create a table in the database and will have 5 properties:
+
+private Long Id -> actual identification of the entity. 
+
+I also add the getters and setters of the properties.
+I anotated this with @Id and @GeneratedValue to let MySQL know this is the primary key and handle the auto-increment
+
+private String name -> name of the user.
+Anotated with @NonNull
+
+private String username -> this will be the string used by the actual user to log
+in the app.
+Anotated with @NonNull and also @Column(unique = true) because I don't want to 
+have multiple users with the same username
+
+private String email -> email of the user.
+Also anotated with @NonNull and @Column(unique=true) for the same reason.
+
+private String password -> user's personal password
+Anotated with @NonNull. In this app I will not encrypt it to keep the project simple and because I intend to do it in future projects.
+in incoming projects.
+
+After that I create 2 constructors - 
+1 empty constructor and 1 with the properties.
+
+
+2. I continue with the repository interface - it will extend the JpaRepository 
+so it can use all its methods to handle the database.
+
+I annotated this class with the @Repository so that Spring authomatically configures it.
+
+I added 3 unimplemented methods:
+findByUsername ->this method is responsible of searching a given user by its username and return an Optional<AppUser>. This will be helpful in case the user doesn't exists because it will not return a null object.
+
+usernameExists -> a boolean that checks if theres is already a user with the given username.
+
+emailExists -> a boolean that checks if theres is already a user with the given email.
+
+3. I created the service interface that will define the methods used by the actual implementation.
+I added the same methods that I defined in the repository class
+
+4. I created the service implementation and I implement the interface and its methods. 
+Anotated with the @Service to configure it with spring.
+I injected the User Repository with the @Autowired annotation.

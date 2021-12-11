@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>arg.hero</groupId>
-	<artifactId>login-registration-1</artifactId>
+	<artifactId>spring-login-registration-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>login-registration-1</name>
+	<name>spring-login-registration-1</name>
 	<description>User login and registration project with spring boot and angular</description>
 	<properties>
 		<java.version>11</java.version>
