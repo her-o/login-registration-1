@@ -11,7 +11,5 @@ import arg.hero.loginAndRegistration.entity.AppUser;
 public interface UserRepository extends JpaRepository<AppUser, Long> {
 	
 	Optional<AppUser> findByUsername(String username);
-	boolean usernameExists(String username);
-	boolean emailExists(String email);
 
 }

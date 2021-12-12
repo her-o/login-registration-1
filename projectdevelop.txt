@@ -78,3 +78,9 @@ I added the same methods that I defined in the repository class
 4. I created the service implementation and I implement the interface and its methods. 
 Anotated with the @Service to configure it with spring.
 I injected the User Repository with the @Autowired annotation.
+
+5. Created controller class.
+Anotated with @RestController for spring to configure it.
+
+Injected UserService with @Autowired annotation.
+
