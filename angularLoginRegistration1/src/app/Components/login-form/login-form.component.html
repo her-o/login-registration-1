@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Login Form</h2>
+    <form [formGroup]="loginForm">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username"
+                class="form-control" placeholder="Enter your username.">
+            <small class='text-danger' *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.touched">Enter a valid username.</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password"
+                class="form-control" placeholder="Enter your password.">
+            <small class='text-danger' *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">Enter a valid password.</small>
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" (click)="login()">
+            </button>
+            <a href="/registerUser" class="btn btn-link">Register</a>
+        </div>
+    </form>
+</div>
