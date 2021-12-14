@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Models/user';
 import { UserService } from 'src/app/Services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-form',
@@ -11,41 +11,30 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  private user = new User();
-  private msg = "";
-  public loginForm!: FormGroup;
+ username!:string;
+ password!:string;
+ authenticated!:boolean;
+
   constructor(private service:UserService,
-              private formBuilder:FormBuilder,
               private router: Router) {
                 
   }
 
   ngOnInit(): void {
-    
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    })
-
   }
-
-  get f() { return this.loginForm.controls }
 
   login() {
-    this.service
-      .loginUserFromRemote(this.user)
-        .subscribe(
-          data => {
-            console.log("Login successful!");
-            this.router.navigate(['loginsuccessful']);
-          }, 
-          error => {
-            this.msg = error.status + " - " + error.message;
-            console.log(this.msg);
-            
-          }
-        )
 
+    this.service.loginUserFromRemote(this.username, this.password).subscribe(result => {
+      
+      this.authenticated = true;
+      alert(this.authenticated);
+      this.router.navigateByUrl("http://localhost:8083/users");
+
+    },
+    error => {
+      this.authenticated = false;
+      alert(this.authenticated);
+    });
   }
-
 }

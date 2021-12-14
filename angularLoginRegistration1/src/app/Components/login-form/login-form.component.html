@@ -1,23 +1,24 @@
-<div class="container">
-    <h2>Login Form</h2>
-    <form [formGroup]="loginForm">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" formControlName="username"
-                class="form-control" placeholder="Enter your username.">
-            <small class='text-danger' *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.touched">Enter a valid username.</small>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" formControlName="password"
-                class="form-control" placeholder="Enter your password.">
-            <small class='text-danger' *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">Enter a valid password.</small>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="wrapper">
+		<form class="p-3 mt-3" (submit)="login()">
+		<div *ngIf="authenticated==true" class="successMessage">Login Successful!</div>
+		<div *ngIf="authenticated==false" class="errorMessage">Bad credentials</div>
+			<div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="username" id="userName" placeholder="Username" [(ngModel)]="username"> </div>
+			<div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="pwd" placeholder="Password" [(ngModel)]="password"> </div> <button class="btn mt-3">Login</button>
+		</form>
+		<div class="text-center fs-6"><a href="#">Sign up</a></div>
+	</div>
+</body>
+</html>
 
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary" (click)="login()">
-            </button>
-            <a href="/registerUser" class="btn btn-link">Register</a>
-        </div>
-    </form>
-</div>
+
+
