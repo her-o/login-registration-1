@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login & Registration</title>
+<link rel="stylesheet" href = "../static/styles.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="d-flex justify-content-center">
+			<div class="brand_logo_container">
+				<img class="user_logo" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png"/>
+			</div>
+		</div>
+		<form class="p-3 mt-3" name="registrationForm" th:action="@{/registration_process}" th:object="${user}" method="post">
+		<div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="name" id="name" placeholder="Name"  th:field="*{name}" required> </div>
+			<div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="username" id="userName" placeholder="Username"  th:field="*{username}" required> </div>
+			<div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email" name="email" id="email" placeholder="Email" th:field="*{email}" required> </div>
+			<div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password" placeholder="Password"  th:field="*{password}" required> </div> 
+			<button type = "submit" class="btn mt-3">Register</button>
+			<div class="text-center fs-6"><a href="/login">Sign in	</a></div>
+			
+		
+		</form>
+		
+	</div>
+</body>
+</html>

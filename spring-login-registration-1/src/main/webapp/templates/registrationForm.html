@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login & Registration</title>
+<link rel="stylesheet" href = "../static/styles.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="d-flex justify-content-center">
+			<div class="brand_logo_container">
+				<img src="" class="brand_logo">
+			</div>
+		</div>
+		<form class="p-3 mt-3" name="registrationForm" th:action="" method="post">
+		<div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="name" id="name" placeholder="Name" required> </div>
+			<div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="username" id="userName" placeholder="Username" required> </div>
+			<div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email" name="email" id="email" placeholder="Email" required> </div>
+			<div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="pwd" placeholder="Password" required> </div> 
+			<div th:if="!${param.success}">
+				<button type = "submit" class="btn mt-3">Login</button>
+				<div class="text-center fs-6"><a href="#">Sign up</a></div>
+			</div>
+			<div th:if="${param.success}">
+				<a href="/logout" class="btn mt-3 logout">Logout</a>
+			</div>
+		</form>
+		
+	</div>
+</body>
+</html>
